@@ -50,10 +50,11 @@ for m in range(7):
 #b)
 
 def AIC(population, coeffs, k):
+    n = len(population)
     residual_sum_sq = 0
     for i in range(len(population)):
         residual_sum_sq += np.square(population[i] - np.polyval(coeffs, years[i]))
-    AIC = 2*k - k*np.log(residual_sum_sq/k)
+    AIC = 2*k + n*np.log(residual_sum_sq/n)
     return AIC
 
 def AICc(AIC, k, n):
